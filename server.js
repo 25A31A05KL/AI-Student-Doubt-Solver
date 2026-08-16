@@ -13,7 +13,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.json({ limit: "1mb" }));
-app.use(express.static(path.join(__dirname, "public")));
+
+// CHANGE 1: public teesi root nunchi serve cheyi
+app.use(express.static(path.join(__dirname)));
 
 app.get("/api/health", (_req, res) => {
   res.json({ ok: true, message: "AI Student Doubt Solver is running." });
@@ -23,13 +25,13 @@ app.post("/api/solve", async (req, res) => {
   try {
     const { doubt, subject = "General", language = "English" } = req.body;
 
-    if (!doubt || !doubt.trim()) {
+    if (!doubt ||!doubt.trim()) {
       return res.status(400).json({ error: "Please enter your doubt." });
     }
 
     if (!process.env.GEMINI_API_KEY) {
       return res.status(500).json({
-        error: "Gemini API key is not configured. Add it to your .env file."
+        error: "Gemini API key is not configured. Add it to your.env file."
       });
     }
 
@@ -82,9 +84,9 @@ Keep the answer focused on learning.
 
     const answer =
       data?.candidates?.[0]?.content?.parts
-        ?.map(part => part.text || "")
-        .join("")
-        .trim();
+       ?.map(part => part.text || "")
+       .join("")
+       .trim();
 
     if (!answer) {
       return res.status(502).json({ error: "The AI returned an empty answer." });
@@ -97,8 +99,9 @@ Keep the answer focused on learning.
   }
 });
 
+// CHANGE 2: public teesi root nunchi index.html ivvu
 app.get("*splat", (_req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.listen(PORT, () => {
