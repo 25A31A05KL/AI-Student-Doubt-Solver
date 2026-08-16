@@ -60,7 +60,7 @@ Copy `.env.example` to `.env` and add your Gemini API key:
 ```env
 PORT=3000
 GEMINI_API_KEY=YOUR_KEY_HERE
-GEMINI_MODEL=gemini-3.5-flash
+GEMINI_MODEL=gemini-1.5-flash
 ```
 
 **Never upload `.env` to GitHub.** It is already included in `.gitignore`.
