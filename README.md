@@ -1,6 +1,13 @@
 # 🎓 AI Student Doubt Solver
 
 An AI-powered web application that helps students understand academic concepts through simple, structured explanations.
+AI Student Doubt Solver 🤖
+
+An AI-powered web app that explains academic doubts in simple language using Google Gemini API.
+
+***LIVE DEMO***✨💥✨
+
+👉https://ai-student-doubt-solver-5dac.onrender.com
 
 ## ✨ Features
 
